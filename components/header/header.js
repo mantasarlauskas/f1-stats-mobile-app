@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import styles from './styles';
 import Image from 'react-native-remote-svg';
 import { FontAwesome } from '@expo/vector-icons';
+import Images from '../../img/images';
 
 class Header extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class Header extends Component {
             onPress={this.toggleMenu}
           />
           <Image
-            source={{ uri: "https://www.formula1.com/etc/designs/fom-website/images/f1_logo.svg" }}
+            source={Images.logo}
             style={styles.image}
           />
         </View>

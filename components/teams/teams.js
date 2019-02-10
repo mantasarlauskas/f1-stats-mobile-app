@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Text, ScrollView } from 'react-native';
+import { Text, ScrollView, View, Image, TouchableOpacity } from 'react-native';
 import Header from '../header';
 import axios from "axios";
+import styles from './styles';
+import Images from '../../img/images';
 
 class Teams extends Component {
   constructor(props) {
@@ -26,14 +28,25 @@ class Teams extends Component {
     })
   };
 
+  renderTeam = ({name, constructorId}) => {
+    return (
+      <TouchableOpacity style={styles.team} key={constructorId}>
+        <Text style={styles.title}>{name}</Text>
+        <View style={styles.container}>
+          <Image source={Images.teams2018[constructorId]} />
+        </View>
+      </TouchableOpacity>
+    )
+  };
+
   render() {
     const { teams } = this.state;
     return (
       <ScrollView>
         <Header />
-        <Text>
-          {teams.map(({name, constructorId}) => <Text key={constructorId}>{name}</Text>)}
-        </Text>
+        <View style={styles.container}>
+          {teams.map(this.renderTeam)}
+        </View>
       </ScrollView>
     )
   }

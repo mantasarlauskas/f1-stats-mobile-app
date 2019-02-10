@@ -37,7 +37,7 @@ class App extends Component {
         <Header/>
         <Card
           navigate={() => this.props.navigation.navigate('Teams')}
-          path={Images.mercedes}
+          path={Images.teams}
           title={'Komandos'}
         />
         <Card path={Images.vettel} title={'Lenktynininkai'}/>
@@ -67,7 +67,7 @@ const AppNavigator = createStackNavigator(
     Teams: Teams
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "Teams",
     headerMode: 'none',
     navigationOptions: {
       headerVisible: false,
