@@ -9,17 +9,30 @@ class Teams extends Component {
 
     this.state = {
       teams: []
-    }
+    };
+
+    this.fetchTeams();
   }
 
+  fetchTeams = () => {
+    axios
+      .get('http://ergast.com/api/f1/2018/constructors.json')
+      .then(res => this.setTeams(res.data.MRData.ConstructorTable.Constructors));
+  };
 
+  setTeams = teams => {
+    this.setState({
+      teams
+    })
+  };
 
   render() {
+    const { teams } = this.state;
     return (
       <ScrollView>
         <Header />
         <Text>
-          somebody
+          {teams.map(({name, constructorId}) => <Text key={constructorId}>{name}</Text>)}
         </Text>
       </ScrollView>
     )

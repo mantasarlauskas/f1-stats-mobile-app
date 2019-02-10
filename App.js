@@ -67,7 +67,11 @@ const AppNavigator = createStackNavigator(
     Teams: Teams
   },
   {
-    initialRouteName: "Home"
+    initialRouteName: "Home",
+    headerMode: 'none',
+    navigationOptions: {
+      headerVisible: false,
+    }
   }
 );
 
