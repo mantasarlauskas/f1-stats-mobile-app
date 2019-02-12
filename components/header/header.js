@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { TouchableOpacity, View, Text } from 'react-native';
 import styles from './styles';
 import Image from 'react-native-remote-svg';
 import { FontAwesome } from '@expo/vector-icons';
@@ -8,18 +8,15 @@ import Images from '../../img/images';
 class Header extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       menu: false,
       menuItems: [
-        'Pagrindinis',
-        'Sezonai',
-        'Komandos',
-        'Lenktynininkai'
+        'Home',
+        'Teams',
+        'Drivers'
       ]
     }
   }
-
 
   toggleMenu = () => {
     this.setState(({ menu }) => ({
@@ -29,9 +26,17 @@ class Header extends Component {
 
   displayMenu = () => {
     const { menuItems } = this.state;
+    const { navigate } = this.props;
     return (
       <View style={styles.menu}>
-        {menuItems.map(item => <Text key={item} style={styles.menuItem}>{item}</Text>)}
+        {menuItems.map(item => (
+          <TouchableOpacity
+            key={item}
+            onPress={() => navigate(item)}
+          >
+            <Text style={styles.menuItem}>{item}</Text>
+          </TouchableOpacity>
+        ))}
       </View>
     )
   };

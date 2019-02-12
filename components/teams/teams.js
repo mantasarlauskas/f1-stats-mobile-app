@@ -41,9 +41,10 @@ class Teams extends Component {
 
   render() {
     const { teams } = this.state;
+    const { navigation } = this.props;
     return (
       <ScrollView>
-        <Header />
+        <Header navigation={navigation} />
         <View style={styles.container}>
           {teams.map(this.renderTeam)}
         </View>
