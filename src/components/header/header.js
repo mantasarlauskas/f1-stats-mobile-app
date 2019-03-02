@@ -11,9 +11,18 @@ class Header extends Component {
     this.state = {
       menu: false,
       menuItems: [
-        'Home',
-        'Teams',
-        'Drivers'
+        {
+          title: 'Home',
+          url: '/'
+        },
+        {
+          title: 'Teams',
+          url: '/teams'
+        },
+        {
+          title: 'Drivers',
+          url: '/drivers'
+        }
       ]
     }
   }
@@ -29,12 +38,12 @@ class Header extends Component {
     const { navigate } = this.props;
     return (
       <View style={styles.menu}>
-        {menuItems.map(item => (
+        {menuItems.map(({ title, url }) => (
           <TouchableOpacity
-            key={item}
-            onPress={() => navigate(item)}
+            key={title}
+            onPress={() => navigate(url)}
           >
-            <Text style={styles.menuItem}>{item}</Text>
+            <Text style={styles.menuItem}>{title}</Text>
           </TouchableOpacity>
         ))}
       </View>

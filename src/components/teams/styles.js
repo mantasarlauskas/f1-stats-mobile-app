@@ -4,7 +4,8 @@ export default StyleSheet.create({
   container: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: '#f7f4f1'
   },
   team: {
     width: '90%',
