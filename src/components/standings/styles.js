@@ -26,7 +26,6 @@ export default StyleSheet.create({
     backgroundColor: 'rgb(176, 176, 176)',
     width: 40,
     height: 28,
-    lineHeight: 14,
     paddingTop: 7,
     paddingRight: 10,
     paddingBottom: 7,
@@ -36,6 +35,7 @@ export default StyleSheet.create({
   number: {
     color: '#FFF',
     fontWeight: 'bold',
+    lineHeight: 14,
     textAlign: 'center',
     transform: [{ skewX: '30deg' }]
   },

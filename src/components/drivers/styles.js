@@ -4,11 +4,8 @@ export default StyleSheet.create({
   container: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
-  },
-  image: {
-    height: 150,
-    width: 150
+    justifyContent: 'center',
+    backgroundColor: '#f7f4f1'
   },
   driver: {
     width: '90%',
@@ -19,5 +16,10 @@ export default StyleSheet.create({
     marginBottom: 10,
     padding: 10,
     borderBottomRightRadius: 10
+  },
+  title: {
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: 'bold'
   }
 });

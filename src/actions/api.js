@@ -21,3 +21,8 @@ export const setTeamStandings = standings => ({
 export const toggleLoading = () => ({
   type: 'TOGGLE_LOADING'
 });
+
+export const setSchedule = schedule => ({
+  type: 'SET_SCHEDULE',
+  payload: schedule
+});

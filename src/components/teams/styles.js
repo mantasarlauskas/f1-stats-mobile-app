@@ -19,6 +19,11 @@ export default StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
+  info: {
+    flex: 1,
+    flexDirection: 'row'
   }
 });

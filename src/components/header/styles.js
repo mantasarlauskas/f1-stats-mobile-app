@@ -6,27 +6,32 @@ export default StyleSheet.create({
     height: 50,
     flex: 1,
     flexDirection: 'row',
+    alignItems: 'center',
+    zIndex: 99
   },
   bars: {
     flexBasis: '20%',
     alignSelf: 'center',
     marginLeft: 10
   },
-  image: {
-    width: 50,
-    height: 50,
+  imageWrapper: {
     flexBasis: '80%',
-    marginLeft: 40
+    marginLeft: 80
+  },
+  image: {
+    width: 60,
+    height: 60
   },
   menu: {
-    backgroundColor: '#000',
+    backgroundColor: '#E40000',
   },
   menuItem: {
     color: '#FFF',
+    height: 40,
+    lineHeight: 40,
     textAlign: 'center',
+    fontWeight: 'bold',
     borderWidth: 0.5,
-    borderColor: '#d6d7da',
-    paddingTop: 10,
-    paddingBottom: 10
+    borderColor: '#d6d7da'
   }
 });

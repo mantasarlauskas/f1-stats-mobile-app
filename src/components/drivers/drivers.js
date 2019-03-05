@@ -2,17 +2,22 @@ import React, {Component} from 'react';
 import { ScrollView, View, Text, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
 import styles from './styles';
-import Images from '../../img/images';
 import Header from '../header';
+import globalStyles from '../globalStyles';
 
 class Drivers extends Component {
   renderDriver = ({ familyName, givenName, driverId }) => {
+    const { driverStandings, history: { push } } = this.props;
+    const {
+      Constructors: [ { constructorId } ]
+    } = driverStandings.find(({ Driver: { driverId: dId } }) => dId === driverId);
     return (
-      <TouchableOpacity style={styles.driver} key={driverId}>
+      <TouchableOpacity
+        onPress={() => push(`/driver/${driverId}`)}
+        style={[styles.driver, globalStyles[`${constructorId}Border`]]}
+        key={driverId}
+      >
         <Text style={styles.title}>{`${givenName} ${familyName}`}</Text>
-        <View style={styles.container}>
-          <Image style={styles.image} source={Images.drivers2018[driverId]} />
-        </View>
       </TouchableOpacity>
     )
   };
@@ -33,8 +38,9 @@ class Drivers extends Component {
   }
 }
 
-const mapStateToProps = ({ api: { drivers, isLoading } }) => ({
+const mapStateToProps = ({ api: { drivers, driverStandings, isLoading } }) => ({
   drivers,
+  driverStandings,
   isLoading
 });
 

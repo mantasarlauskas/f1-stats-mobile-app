@@ -3,7 +3,8 @@ import {
   setDrivers,
   toggleLoading,
   setDriverStandings,
-  setTeamStandings
+  setTeamStandings,
+  setSchedule
 } from '../actions/api';
 import axios from 'axios';
 
@@ -35,11 +36,19 @@ const getTeamStandings = () => async (dispatch) => {
   dispatch(setTeamStandings(StandingsLists[0].ConstructorStandings));
 };
 
+const getSchedule = () => async (dispatch) => {
+  const {
+    data: { MRData: { RaceTable: { Races } } }
+  } = await axios('https://ergast.com/api/f1/2019.json');
+  dispatch(setSchedule(Races));
+};
+
 export const fetchData = () => async (dispatch) => {
   dispatch(toggleLoading());
   await dispatch(getDrivers());
   await dispatch(getTeams());
   await dispatch(getDriverStandings());
   await dispatch(getTeamStandings());
+  await dispatch(getSchedule());
   dispatch(toggleLoading());
 };

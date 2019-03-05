@@ -3,6 +3,7 @@ const initialState = {
   teams: [],
   driverStandings: [],
   teamStandings: [],
+  schedule: [],
   isLoading: false
 };
 
@@ -32,6 +33,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         teamStandings: action.payload
+      };
+    case 'SET_SCHEDULE':
+      return {
+        ...state,
+        schedule: action.payload
       };
     default:
       return state;
