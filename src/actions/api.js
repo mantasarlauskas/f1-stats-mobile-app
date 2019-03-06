@@ -26,3 +26,8 @@ export const setSchedule = schedule => ({
   type: 'SET_SCHEDULE',
   payload: schedule
 });
+
+export const setResults = results => ({
+  type: 'SET_RESULTS',
+  payload: results
+});

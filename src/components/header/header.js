@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { TouchableOpacity, View, Text, Animated } from 'react-native';
 import styles from './styles';
 import Image from 'react-native-remote-svg';
@@ -27,6 +27,10 @@ class Header extends Component {
         {
           title: 'Taškų įskaitos',
           url: '/standings'
+        },
+        {
+          title: 'Rezultatai',
+          url: '/results'
         },
         {
           title: 'Tvarkaraštis',
@@ -66,16 +70,23 @@ class Header extends Component {
     }
   };
 
+  handleRedirect = url => {
+    const { navigate } = this.props;
+    this.setState({
+      menu: false,
+      animation: new Animated.Value(-250)
+    }, () => navigate(url));
+  };
+
   displayMenu = () => {
     const { menuItems, animation } = this.state;
-    const { navigate } = this.props;
     return (
-      <Animated.View style={{ position: 'relative', top: animation }}>
+      <Animated.View style={{ top: animation }}>
         <View style={styles.menu}>
           {menuItems.map(({ title, url }) => (
             <TouchableOpacity
               key={title}
-              onPress={() => navigate(url)}
+              onPress={() => this.handleRedirect(url)}
             >
               <Text style={styles.menuItem}>{title}</Text>
             </TouchableOpacity>
@@ -89,7 +100,7 @@ class Header extends Component {
     const { menu } = this.state;
     const { navigate } = this.props;
     return (
-      <View>
+      <View style={styles.header}>
         <View style={styles.container}>
           <FontAwesome
             style={styles.bars}

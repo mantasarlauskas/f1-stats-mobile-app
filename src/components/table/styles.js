@@ -5,15 +5,15 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontSize: 24,
     fontWeight: 'bold',
-    marginTop: 15,
-    marginBottom: 15
+    marginTop: 20
   },
   table: {
     marginLeft: 'auto',
     marginRight: 'auto',
     width: '95%',
     backgroundColor: '#f7f4f1',
-    marginBottom: 20
+    marginBottom: 20,
+    marginTop: 20
   },
   tableRow: {
     flex: 1,
@@ -29,6 +29,8 @@ export default StyleSheet.create({
     fontWeight: 'bold'
   },
   tableCell: {
+    flex: 1,
+    alignItems: 'center',
     textAlign: 'center'
   },
   tableCellSmall: {

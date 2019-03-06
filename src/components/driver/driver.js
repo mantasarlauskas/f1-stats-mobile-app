@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import { ScrollView, View, Text, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
 import styles from './styles';
-import Header from '../header';
 import globalStyles from '../globalStyles';
 import Images from '../../img/images';
+import Loading from '../loading';
 
 class Driver extends Component {
   renderInfo = (title, text) => {
@@ -21,13 +21,12 @@ class Driver extends Component {
   };
 
   render() {
-    const { history: { push }, driver, isLoading, team } = this.props;
+    const { driver, isLoading, team } = this.props;
     const { Constructors: [ { name, constructorId } ], points, position, wins } = team;
     const { givenName, familyName, permanentNumber, nationality, dateOfBirth } = driver;
     if (!isLoading) {
       return (
         <ScrollView>
-          <Header navigate={push} />
           <View style={styles.container}>
             <Text style={styles.title}>{`${givenName} ${familyName}`}</Text>
             <View style={styles.content}>
@@ -48,7 +47,7 @@ class Driver extends Component {
         </ScrollView>
       )
     }
-    return <Text>waiting...</Text>
+    return <Loading />
   }
 }
 

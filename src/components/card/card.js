@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Text, TouchableOpacity, ImageBackground } from 'react-native';
 import styles from './styles';
 import { LinearGradient } from 'expo';
-import FastImage from 'react-native-fast-image'
 
 class Card extends Component {
   render() {

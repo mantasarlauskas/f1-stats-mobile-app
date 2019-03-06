@@ -1,61 +1,57 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Text } from 'react-native';
-import { connect } from 'react-redux'
-import Header from '../header';
+import { ScrollView, View, Text} from 'react-native';
 import styles from '../table/styles';
 
-class Schedule extends Component {
-  renderRow = ({ Circuit: { circuitName }, round, raceName, date }) => {
+class Race extends Component {
+  renderRow = ({
+    Driver: { givenName, familyName, driverId },
+    Constructor: { name },
+    position,
+    Time,
+    status
+  }) => {
     return (
-      <View style={styles.tableRow} key={round}>
+      <View style={styles.tableRow} key={driverId}>
         <Text style={[styles.tableCell, styles.tableCellSmall]}>
-          {round}
+          {position}
         </Text>
         <Text style={[styles.tableCell, styles.tableCellBig]}>
-          {raceName}
+          {`${givenName} ${familyName}`}
         </Text>
         <Text style={[styles.tableCell, styles.tableCellBig]}>
-          {circuitName}
+          {name}
         </Text>
         <Text style={[styles.tableCell, styles.tableCellBig]}>
-          {date}
+          {Time ? Time.time : status}
         </Text>
       </View>
     )
   };
 
   render() {
-    const { schedule } = this.props;
+    const { results } = this.props;
     return (
       <ScrollView>
-        <Text style={styles.title}>
-          Tvarkaraštis
-        </Text>
         <View style={styles.table}>
           <View style={styles.tableRow}>
             <Text style={[styles.tableCell, styles.tableHeader, styles.tableCellSmall]}>
-              Nr.
+              Pos.
             </Text>
             <Text style={[styles.tableCell, styles.tableHeader, styles.tableCellBig]}>
-              Lenktynės
+              Pilotas
             </Text>
             <Text style={[styles.tableCell, styles.tableHeader, styles.tableCellBig]}>
-              Trasa
+              Komanda
             </Text>
             <Text style={[styles.tableCell, styles.tableHeader, styles.tableCellBig]}>
-              Data
+              Laikas
             </Text>
           </View>
-          {schedule.map(this.renderRow)}
+          {results.map(this.renderRow)}
         </View>
       </ScrollView>
-    );
+    )
   }
 }
 
-const mapStateToProps = ({ api: { schedule } }) => ({
-  schedule
-});
-
-export default connect(mapStateToProps)(Schedule);
-
+export default Race;

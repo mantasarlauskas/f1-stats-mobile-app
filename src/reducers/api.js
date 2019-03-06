@@ -4,6 +4,7 @@ const initialState = {
   driverStandings: [],
   teamStandings: [],
   schedule: [],
+  results: [],
   isLoading: false
 };
 
@@ -38,6 +39,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         schedule: action.payload
+      };
+    case 'SET_RESULTS':
+      return {
+        ...state,
+        results: action.payload
       };
     default:
       return state;

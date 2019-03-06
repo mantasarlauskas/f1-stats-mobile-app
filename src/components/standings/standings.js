@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Text, StyleSheet, Dimensions } from 'react-native';
+import { ScrollView, Dimensions } from 'react-native';
 import { TabView, TabBar } from 'react-native-tab-view';
 import DriverStandings from '../driverStandings';
 import TeamStandings from '../teamStandings';
 import Header from '../header';
+import styles from './styles';
 
 class Standings extends Component {
   constructor(props) {
@@ -26,11 +27,9 @@ class Standings extends Component {
   );
 
   render() {
-    const { history: { push } } = this.props;
     const { index } = this.state;
     return (
       <ScrollView>
-        <Header navigate={push} />
         <TabView
           navigationState={this.state}
           style={styles.scene}
@@ -48,14 +47,5 @@ class Standings extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  scene: {
-    flex: 1,
-  },
-  tabBar: {
-    backgroundColor: '#E40000'
-  }
-});
 
 export default Standings;

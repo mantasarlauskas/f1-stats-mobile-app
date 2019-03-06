@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, ScrollView, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import styles from './styles';
-import Header from '../header';
+import Loading from '../loading';
 import globalStyles from '../globalStyles';
 
 class Teams extends Component {
@@ -20,18 +20,17 @@ class Teams extends Component {
   };
 
   render() {
-    const { history: { push }, teams, isLoading } = this.props;
+    const { teams, isLoading } = this.props;
     if (!isLoading) {
       return (
         <ScrollView>
-          <Header navigate={push} />
           <View style={styles.container}>
             {teams.map(this.renderTeam)}
           </View>
         </ScrollView>
       )
     }
-    return <Text>Waiting...</Text>
+    return <Loading />
   }
 }
 

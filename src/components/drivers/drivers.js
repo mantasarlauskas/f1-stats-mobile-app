@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import { ScrollView, View, Text, TouchableOpacity, Image } from 'react-native';
+import { ScrollView, View, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import styles from './styles';
-import Header from '../header';
 import globalStyles from '../globalStyles';
+import Loading from '../loading';
 
 class Drivers extends Component {
   renderDriver = ({ familyName, givenName, driverId }) => {
@@ -23,18 +23,17 @@ class Drivers extends Component {
   };
 
   render() {
-    const { history: { push }, drivers, isLoading } = this.props;
+    const { drivers, isLoading } = this.props;
     if (!isLoading) {
       return (
         <ScrollView>
-          <Header navigate={push} />
           <View style={styles.container}>
             {drivers.map(this.renderDriver)}
           </View>
         </ScrollView>
       )
     }
-    return <Text>waiting...</Text>
+    return <Loading />;
   }
 }
 

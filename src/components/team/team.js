@@ -6,6 +6,7 @@ import styles from './styles';
 import Header from '../header';
 import globalStyles from '../globalStyles';
 import Images from "../../img/images";
+import Loading from '../loading';
 
 class Team extends Component {
   renderInfo = (title, text) => {
@@ -23,7 +24,6 @@ class Team extends Component {
 
   render() {
     const {
-      history: { push },
       teamStandings: { points, position, wins },
       team: { constructorId, name, nationality },
       drivers,
@@ -32,7 +32,6 @@ class Team extends Component {
     if (!isLoading) {
       return (
         <ScrollView>
-          <Header navigate={push} />
           <View style={styles.container}>
             <Text style={styles.title}>{name}</Text>
             <View style={styles.content}>
@@ -58,11 +57,13 @@ class Team extends Component {
         </ScrollView>
       )
     }
-    return <Text>Waiting...</Text>
+    return <Loading />;
   }
 }
 
-const mapStateToProps = ({ api: { teams, driverStandings, teamStandings, isLoading } }, { match: { params: { id } } }) => ({
+const mapStateToProps = ({
+  api: { teams, driverStandings, teamStandings, isLoading }
+}, { match: { params: { id } } }) => ({
   team: teams.find(({ constructorId }) => constructorId === id),
   drivers: driverStandings.filter(({ Constructors }) => Constructors[0].constructorId === id),
   teamStandings: teamStandings.find(({ Constructor: { constructorId } }) =>  constructorId === id),

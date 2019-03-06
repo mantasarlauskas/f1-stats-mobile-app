@@ -1,6 +1,12 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+  scene: {
+    flex: 1,
+  },
+  tabBar: {
+    backgroundColor: '#E40000'
+  },
   container: {
     backgroundColor: '#f7f4f1'
   },

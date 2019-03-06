@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import rootReducer from './src/reducers';
 import thunk from 'redux-thunk';
 import Routes from './Routes';
+import Images from './src/img/images';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 

@@ -1,35 +1,41 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Text } from 'react-native';
+import { ScrollView, View, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux'
 import Header from '../header';
 import styles from '../table/styles';
 
-class Schedule extends Component {
+class Results extends Component {
   renderRow = ({ Circuit: { circuitName }, round, raceName, date }) => {
+    const { history: { push } } = this.props;
     return (
-      <View style={styles.tableRow} key={round}>
-        <Text style={[styles.tableCell, styles.tableCellSmall]}>
-          {round}
-        </Text>
-        <Text style={[styles.tableCell, styles.tableCellBig]}>
-          {raceName}
-        </Text>
-        <Text style={[styles.tableCell, styles.tableCellBig]}>
-          {circuitName}
-        </Text>
-        <Text style={[styles.tableCell, styles.tableCellBig]}>
-          {date}
-        </Text>
-      </View>
+      <TouchableOpacity
+        key={round}
+        onPress={() => push(`/results/${round}`)}
+      >
+        <View style={styles.tableRow}>
+          <Text style={[styles.tableCell, styles.tableCellSmall]}>
+            {round}
+          </Text>
+          <Text style={[styles.tableCell, styles.tableCellBig]}>
+            {raceName}
+          </Text>
+          <Text style={[styles.tableCell, styles.tableCellBig]}>
+            {circuitName}
+          </Text>
+          <Text style={[styles.tableCell, styles.tableCellBig]}>
+            {date}
+          </Text>
+        </View>
+      </TouchableOpacity>
     )
   };
 
   render() {
-    const { schedule } = this.props;
+    const { results } = this.props;
     return (
       <ScrollView>
         <Text style={styles.title}>
-          Tvarkaraštis
+          Rezultatai
         </Text>
         <View style={styles.table}>
           <View style={styles.tableRow}>
@@ -46,16 +52,16 @@ class Schedule extends Component {
               Data
             </Text>
           </View>
-          {schedule.map(this.renderRow)}
+          {results.map(this.renderRow)}
         </View>
       </ScrollView>
     );
   }
 }
 
-const mapStateToProps = ({ api: { schedule } }) => ({
-  schedule
+const mapStateToProps = ({ api: { results } }) => ({
+  results
 });
 
-export default connect(mapStateToProps)(Schedule);
+export default connect(mapStateToProps)(Results);
 

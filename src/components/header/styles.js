@@ -1,13 +1,19 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
+  header: {
+    minHeight: 74,
+    paddingTop: 24,
+    backgroundColor: '#FFF',
+    position: 'absolute',
+    zIndex: 99
+  },
   container: {
     backgroundColor: '#E40000',
     height: 50,
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    zIndex: 99
+    zIndex: 99,
   },
   bars: {
     flexBasis: '20%',
@@ -32,6 +38,7 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     borderWidth: 0.5,
-    borderColor: '#d6d7da'
+    borderColor: '#d6d7da',
+    width: Dimensions.get('window').width
   }
 });
