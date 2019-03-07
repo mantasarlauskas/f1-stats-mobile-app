@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Text} from 'react-native';
+import { ScrollView, View, Text } from 'react-native';
 import styles from '../table/styles';
 
 class Qualifying extends Component {
@@ -9,31 +9,29 @@ class Qualifying extends Component {
     position,
     Q1,
     Q2,
-    Q3
-  }) => {
-    return (
-      <View style={styles.tableRow} key={driverId}>
-        <Text style={[styles.tableCell, { flexBasis: '7%'}]}>
-          {position}
-        </Text>
-        <Text style={[styles.tableCell, { flexBasis: '25%'}]}>
-          {`${givenName} ${familyName}`}
-        </Text>
-        <Text style={[styles.tableCell, { flexBasis: '25%'}]}>
-          {name}
-        </Text>
-        <Text style={[styles.tableCell, { flexBasis: '15%', fontSize: 10 }]}>
-          {Q1}
-        </Text>
-        <Text style={[styles.tableCell, { flexBasis: '14%', fontSize: 10 }]}>
-          {Q2}
-        </Text>
-        <Text style={[styles.tableCell, { flexBasis: '14%', fontSize: 10 }]}>
-          {Q3}
-        </Text>
-      </View>
-    )
-  };
+    Q3,
+  }) => (
+    <View style={styles.tableRow} key={driverId}>
+      <Text style={[styles.tableCell, { flexBasis: '7%' }]}>
+        {position}
+      </Text>
+      <Text style={[styles.tableCell, { flexBasis: '25%' }]}>
+        {`${givenName} ${familyName}`}
+      </Text>
+      <Text style={[styles.tableCell, { flexBasis: '25%' }]}>
+        {name}
+      </Text>
+      <Text style={[styles.tableCell, { flexBasis: '15%', fontSize: 10 }]}>
+        {Q1}
+      </Text>
+      <Text style={[styles.tableCell, { flexBasis: '14%', fontSize: 10 }]}>
+        {Q2}
+      </Text>
+      <Text style={[styles.tableCell, { flexBasis: '14%', fontSize: 10 }]}>
+        {Q3}
+      </Text>
+    </View>
+  );
 
   render() {
     const { results } = this.props;
@@ -41,13 +39,13 @@ class Qualifying extends Component {
       <ScrollView>
         <View style={styles.table}>
           <View style={styles.tableRow}>
-            <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '7%'}]}>
+            <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '7%' }]}>
               P.
             </Text>
-            <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '25%'}]}>
+            <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '25%' }]}>
               Pilotas
             </Text>
-            <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '25%'}]}>
+            <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '25%' }]}>
               Komanda
             </Text>
             <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '15%', fontSize: 10 }]}>
@@ -63,7 +61,7 @@ class Qualifying extends Component {
           {results.map(this.renderRow)}
         </View>
       </ScrollView>
-    )
+    );
   }
 }
 

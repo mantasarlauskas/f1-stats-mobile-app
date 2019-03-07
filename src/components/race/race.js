@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Text} from 'react-native';
+import { ScrollView, View, Text } from 'react-native';
 import styles from '../table/styles';
 
 class Race extends Component {
@@ -8,25 +8,23 @@ class Race extends Component {
     Constructor: { name },
     position,
     Time,
-    status
-  }) => {
-    return (
-      <View style={styles.tableRow} key={driverId}>
-        <Text style={[styles.tableCell, styles.tableCellSmall]}>
-          {position}
-        </Text>
-        <Text style={[styles.tableCell, styles.tableCellBig]}>
-          {`${givenName} ${familyName}`}
-        </Text>
-        <Text style={[styles.tableCell, styles.tableCellBig]}>
-          {name}
-        </Text>
-        <Text style={[styles.tableCell, styles.tableCellBig]}>
-          {Time ? Time.time : status}
-        </Text>
-      </View>
-    )
-  };
+    status,
+  }) => (
+    <View style={styles.tableRow} key={driverId}>
+      <Text style={[styles.tableCell, styles.tableCellSmall]}>
+        {position}
+      </Text>
+      <Text style={[styles.tableCell, styles.tableCellBig]}>
+        {`${givenName} ${familyName}`}
+      </Text>
+      <Text style={[styles.tableCell, styles.tableCellBig]}>
+        {name}
+      </Text>
+      <Text style={[styles.tableCell, styles.tableCellBig]}>
+        {Time ? Time.time : status}
+      </Text>
+    </View>
+  );
 
   render() {
     const { results } = this.props;
@@ -50,7 +48,7 @@ class Race extends Component {
           {results.map(this.renderRow)}
         </View>
       </ScrollView>
-    )
+    );
   }
 }
 

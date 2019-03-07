@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     width: '90%',
-    backgroundColor: 'red',
     height: 200,
     shadowOpacity: 0.5,
     shadowRadius: 5,
@@ -11,12 +10,12 @@ export default StyleSheet.create({
     shadowOffset: { height: 0, width: 0 },
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginVertical: 20
+    marginVertical: 20,
   },
   image: {
     position: 'relative',
     width: '100%',
-    height: '100%'
+    height: '100%',
   },
   info: {
     position: 'absolute',
@@ -26,11 +25,10 @@ export default StyleSheet.create({
     height: 50,
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   title: {
     fontSize: 20,
-    color: '#FFF'
-  }
-
+    color: '#FFF',
+  },
 });

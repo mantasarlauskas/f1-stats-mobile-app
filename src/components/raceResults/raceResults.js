@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import {ScrollView, StyleSheet, Dimensions, Text} from 'react-native';
+import { ScrollView, Dimensions, Text } from 'react-native';
 import { TabView, TabBar } from 'react-native-tab-view';
 import axios from 'axios';
-import Header from '../header';
 import Race from '../race';
 import Qualifying from '../qualifying';
 import PitStops from '../pitStops';
@@ -17,12 +16,12 @@ class RaceResults extends Component {
       routes: [
         { key: 'race', title: 'Lenktynės' },
         { key: 'qualifying', title: 'Kvalifikacija' },
-        { key: 'pitStops', title: 'Sustojimai boksuose'}
+        { key: 'pitStops', title: 'Sustojimai boksuose' },
       ],
       race: [],
       qualifying: [],
       pitStops: [],
-      isLoading: true
+      isLoading: true,
     };
     this.fetchData();
   }
@@ -31,24 +30,24 @@ class RaceResults extends Component {
     const { match: { params: { id } } } = this.props;
     const {
       data: {
-        MRData: { RaceTable: { Races: RaceStats } }
-      }
+        MRData: { RaceTable: { Races: RaceStats } },
+      },
     } = await axios(`https://ergast.com/api/f1/2018/${id}/results.json`);
     const {
       data: {
-        MRData: { RaceTable: { Races: QualifyingStats } }
-      }
+        MRData: { RaceTable: { Races: QualifyingStats } },
+      },
     } = await axios(`https://ergast.com/api/f1/2018/${id}/qualifying.json`);
     const {
       data: {
-        MRData: { RaceTable: { Races: PitStopStats } }
-      }
+        MRData: { RaceTable: { Races: PitStopStats } },
+      },
     } = await axios(`https://ergast.com/api/f1/2018/${id}/pitstops.json`);
     this.setState({
       race: RaceStats[0].Results,
       qualifying: QualifyingStats[0].QualifyingResults,
       pitStops: PitStopStats[0].PitStops,
-      isLoading: false
+      isLoading: false,
     });
   };
 
@@ -63,7 +62,9 @@ class RaceResults extends Component {
 
   render() {
     const { match: { params: { id } } } = this.props;
-    const { index, race, isLoading, qualifying, pitStops } = this.state;
+    const {
+      index, race, isLoading, qualifying, pitStops,
+    } = this.state;
     if (!isLoading) {
       return (
         <ScrollView>
@@ -78,7 +79,9 @@ class RaceResults extends Component {
             renderScene={() => null}
             renderTabBar={this.renderTabBar}
           />
-          <Text style={styles.title}>2018 m. {id} etapo rezultatai</Text>
+          <Text style={styles.title}>
+            {`2018 m. ${id} etapo rezultatai`}
+          </Text>
           {index === 0 && <Race results={race} />}
           {index === 1 && <Qualifying results={qualifying} />}
           {index === 2 && <PitStops results={pitStops} />}

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { ScrollView, Dimensions } from 'react-native';
+import { connect } from 'react-redux';
 import { TabView, TabBar } from 'react-native-tab-view';
 import DriverStandings from '../driverStandings';
 import TeamStandings from '../teamStandings';
-import Header from '../header';
+import Loading from '../loading';
 import styles from './styles';
 
 class Standings extends Component {
@@ -15,7 +16,7 @@ class Standings extends Component {
         { key: 'drivers', title: 'Lenktynininkai' },
         { key: 'teams', title: 'Komandos' },
       ],
-    }
+    };
   }
 
   renderTabBar = props => (
@@ -28,24 +29,32 @@ class Standings extends Component {
 
   render() {
     const { index } = this.state;
-    return (
-      <ScrollView>
-        <TabView
-          navigationState={this.state}
-          style={styles.scene}
-          onIndexChange={index => this.setState({ index })}
-          initialLayout={{
-            width: Dimensions.get('window').width,
-            height: 0,
-          }}
-          renderScene={() => null}
-          renderTabBar={this.renderTabBar}
-        />
-        {index === 0 && <DriverStandings />}
-        {index === 1 && <TeamStandings />}
-      </ScrollView>
-    )
+    const { isLoading } = this.props;
+    if (!isLoading) {
+      return (
+        <ScrollView>
+          <TabView
+            navigationState={this.state}
+            style={styles.scene}
+            onIndexChange={index => this.setState({ index })}
+            initialLayout={{
+              width: Dimensions.get('window').width,
+              height: 0,
+            }}
+            renderScene={() => null}
+            renderTabBar={this.renderTabBar}
+          />
+          {index === 0 && <DriverStandings />}
+          {index === 1 && <TeamStandings />}
+        </ScrollView>
+      );
+    }
+    return <Loading />;
   }
 }
 
-export default Standings;
+const mapStateToProps = ({ api: { isLoading } }) => ({
+  isLoading,
+});
+
+export default connect(mapStateToProps)(Standings);

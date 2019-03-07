@@ -16,7 +16,7 @@ const images = {
     toro_rosso: require('./teams/toro_rosso.png'),
     sauber: require('./teams/sauber.png'),
     williams: require('./teams/williams.png'),
-  }
+  },
 };
 
 export default images;

@@ -5,10 +5,10 @@ export default StyleSheet.create({
     flex: 1,
   },
   tabBar: {
-    backgroundColor: '#E40000'
+    backgroundColor: '#E40000',
   },
   container: {
-    backgroundColor: '#f7f4f1'
+    backgroundColor: '#f7f4f1',
   },
   row: {
     margin: 10,
@@ -23,10 +23,10 @@ export default StyleSheet.create({
     borderColor: '#000',
     borderRightWidth: 2,
     borderBottomWidth: 2,
-    borderBottomRightRadius: 5
+    borderBottomRightRadius: 5,
   },
   firstColumn: {
-    flexBasis: '25%'
+    flexBasis: '25%',
   },
   numberWrapper: {
     backgroundColor: 'rgb(176, 176, 176)',
@@ -43,28 +43,28 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     lineHeight: 14,
     textAlign: 'center',
-    transform: [{ skewX: '30deg' }]
+    transform: [{ skewX: '30deg' }],
   },
   numberColor: {
     position: 'absolute',
     width: 10,
     right: 0,
     top: 0,
-    height: 28
+    height: 28,
   },
   title: {
     flexBasis: '50%',
   },
   text: {
     textAlign: 'center',
-    fontSize: 18
+    fontSize: 18,
   },
   boldText: {
     textAlign: 'center',
     fontSize: 18,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   points: {
-    flexBasis: '25%'
-  }
+    flexBasis: '25%',
+  },
 });

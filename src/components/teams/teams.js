@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Text, ScrollView, View, TouchableOpacity } from 'react-native';
+import {
+  Text, ScrollView, View, TouchableOpacity,
+} from 'react-native';
 import { connect } from 'react-redux';
 import styles from './styles';
 import Loading from '../loading';
@@ -7,7 +9,7 @@ import globalStyles from '../globalStyles';
 
 class Teams extends Component {
   renderTeam = ({ name, constructorId }) => {
-    const { history: { push }} = this.props;
+    const { history: { push } } = this.props;
     return (
       <TouchableOpacity
         key={constructorId}
@@ -28,15 +30,15 @@ class Teams extends Component {
             {teams.map(this.renderTeam)}
           </View>
         </ScrollView>
-      )
+      );
     }
-    return <Loading />
+    return <Loading />;
   }
 }
 
 const mapStateToProps = ({ api: { teams, isLoading } }) => ({
   teams,
-  isLoading
+  isLoading,
 });
 
 export default connect(mapStateToProps)(Teams);

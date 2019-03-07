@@ -1,9 +1,11 @@
-import React, { Component, Fragment } from 'react';
-import { TouchableOpacity, View, Text, Animated } from 'react-native';
-import styles from './styles';
+import React, { Component } from 'react';
+import {
+  TouchableOpacity, View, Text, Animated,
+} from 'react-native';
 import Image from 'react-native-remote-svg';
 import { FontAwesome } from '@expo/vector-icons';
 import Images from '../../img/images';
+import styles from './styles';
 
 class Header extends Component {
   constructor(props) {
@@ -14,74 +16,74 @@ class Header extends Component {
       menuItems: [
         {
           title: 'Pagrindinis',
-          url: '/'
+          url: '/',
         },
         {
           title: 'Komandos',
-          url: '/teams'
+          url: '/teams',
         },
         {
           title: 'Lenktynininkai',
-          url: '/drivers'
+          url: '/drivers',
         },
         {
           title: 'Taškų įskaitos',
-          url: '/standings'
+          url: '/standings',
         },
         {
           title: 'Rezultatai',
-          url: '/results'
+          url: '/results',
         },
         {
           title: 'Tvarkaraštis',
-          url: '/schedule'
-        }
-      ]
-    }
+          url: '/schedule',
+        },
+      ],
+    };
   }
 
   toggleMenu = () => {
     this.setState(({ menu }) => ({
-      menu: !menu
+      menu: !menu,
     }));
   };
 
   toggleFade = () => {
-    const { menu } = this.state;
+    const { menu, animation } = this.state;
     if (!menu) {
       this.toggleMenu();
       Animated.timing(
-        this.state.animation,
+        animation,
         {
           toValue: 0,
           duration: 200,
 
-        }
+        },
       ).start();
     } else {
       Animated.timing(
-        this.state.animation,
+        animation,
         {
           toValue: -250,
           duration: 200,
-        }
+        },
       ).start();
       setTimeout(this.toggleMenu, 200);
     }
   };
 
-  handleRedirect = url => {
+  handleRedirect = (url) => {
     const { navigate } = this.props;
     this.setState({
       menu: false,
-      animation: new Animated.Value(-250)
+      animation: new Animated.Value(-250),
     }, () => navigate(url));
   };
 
   displayMenu = () => {
     const { menuItems, animation } = this.state;
     return (
-      <Animated.View style={{ top: animation }}>
+      <Animated.View style={{ left: animation }}>
         <View style={styles.menu}>
           {menuItems.map(({ title, url }) => (
             <TouchableOpacity
@@ -93,7 +95,7 @@ class Header extends Component {
           ))}
         </View>
       </Animated.View>
-    )
+    );
   };
 
   render() {
@@ -104,9 +106,9 @@ class Header extends Component {
         <View style={styles.container}>
           <FontAwesome
             style={styles.bars}
-            name='bars'
+            name={'bars'}
             size={35}
-            color='white'
+            color={'white'}
             onPress={this.toggleFade}
           />
           <TouchableOpacity
@@ -121,7 +123,7 @@ class Header extends Component {
         </View>
         {menu && this.displayMenu()}
       </View>
-    )
+    );
   }
 }
 

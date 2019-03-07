@@ -5,7 +5,7 @@ const initialState = {
   teamStandings: [],
   schedule: [],
   results: [],
-  isLoading: false
+  isLoading: false,
 };
 
 export default (state = initialState, action) => {
@@ -13,39 +13,39 @@ export default (state = initialState, action) => {
     case 'SET_DRIVERS':
       return {
         ...state,
-        drivers: action.payload
+        drivers: action.payload,
       };
     case 'SET_TEAMS':
       return {
         ...state,
-        teams: action.payload
+        teams: action.payload,
       };
     case 'TOGGLE_LOADING':
       return {
         ...state,
-        isLoading: !state.isLoading
+        isLoading: !state.isLoading,
       };
     case 'SET_DRIVER_STANDINGS':
       return {
         ...state,
-        driverStandings: action.payload
+        driverStandings: action.payload,
       };
     case 'SET_TEAM_STANDINGS':
       return {
         ...state,
-        teamStandings: action.payload
+        teamStandings: action.payload,
       };
     case 'SET_SCHEDULE':
       return {
         ...state,
-        schedule: action.payload
+        schedule: action.payload,
       };
     case 'SET_RESULTS':
       return {
         ...state,
-        results: action.payload
+        results: action.payload,
       };
     default:
       return state;
   }
-}
+};

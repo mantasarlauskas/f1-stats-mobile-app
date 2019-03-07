@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Text} from 'react-native';
+import { ScrollView, View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import styles from '../table/styles';
 
@@ -7,7 +7,7 @@ class PitStops extends Component {
   renderRow = ({ driverId, lap, duration }, index) => {
     const { driverStandings, drivers } = this.props;
     const {
-      Constructors: [ { name } ]
+      Constructors: [{ name }],
     } = driverStandings.find(({ Driver: { driverId: dId } }) => dId === driverId);
     const { givenName, familyName } = drivers.find(({ driverId: dId }) => dId === driverId);
     return (
@@ -25,7 +25,7 @@ class PitStops extends Component {
           {duration}
         </Text>
       </View>
-    )
+    );
   };
 
   render() {
@@ -50,13 +50,13 @@ class PitStops extends Component {
           {results.map(this.renderRow)}
         </View>
       </ScrollView>
-    )
+    );
   }
 }
 
 const mapStateToProps = ({ api: { drivers, driverStandings } }) => ({
   drivers,
-  driverStandings
+  driverStandings,
 });
 
 export default connect(mapStateToProps)(PitStops);

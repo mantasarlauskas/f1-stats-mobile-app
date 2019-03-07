@@ -5,7 +5,7 @@ export default StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#f7f4f1'
+    backgroundColor: '#f7f4f1',
   },
   driver: {
     width: '90%',
@@ -15,11 +15,11 @@ export default StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     padding: 10,
-    borderBottomRightRadius: 10
+    borderBottomRightRadius: 10,
   },
   title: {
     textAlign: 'center',
     fontSize: 16,
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });

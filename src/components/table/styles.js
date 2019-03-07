@@ -5,7 +5,7 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontSize: 24,
     fontWeight: 'bold',
-    marginTop: 20
+    marginTop: 20,
   },
   table: {
     marginLeft: 'auto',
@@ -13,7 +13,7 @@ export default StyleSheet.create({
     width: '95%',
     backgroundColor: '#f7f4f1',
     marginBottom: 20,
-    marginTop: 20
+    marginTop: 20,
   },
   tableRow: {
     flex: 1,
@@ -23,20 +23,20 @@ export default StyleSheet.create({
     justifyContent: 'center',
     padding: 10,
     borderColor: '#FFF',
-    borderWidth: 1
+    borderWidth: 1,
   },
   tableHeader: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   tableCell: {
     flex: 1,
     alignItems: 'center',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   tableCellSmall: {
-    flexBasis: '10%'
+    flexBasis: '10%',
   },
   tableCellBig: {
-    flexBasis: '30%'
-  }
+    flexBasis: '30%',
+  },
 });

@@ -6,7 +6,7 @@ export default StyleSheet.create({
     paddingTop: 24,
     backgroundColor: '#FFF',
     position: 'absolute',
-    zIndex: 99
+    zIndex: 99,
   },
   container: {
     backgroundColor: '#E40000',
@@ -18,15 +18,15 @@ export default StyleSheet.create({
   bars: {
     flexBasis: '20%',
     alignSelf: 'center',
-    marginLeft: 10
+    marginLeft: 10,
   },
   imageWrapper: {
     flexBasis: '80%',
-    marginLeft: 80
+    marginLeft: 80,
   },
   image: {
     width: 60,
-    height: 60
+    height: 60,
   },
   menu: {
     backgroundColor: '#E40000',
@@ -39,6 +39,6 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     borderWidth: 0.5,
     borderColor: '#d6d7da',
-    width: Dimensions.get('window').width
-  }
+    width: Dimensions.get('window').width,
+  },
 });
