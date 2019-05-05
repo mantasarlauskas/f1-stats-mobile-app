@@ -17,6 +17,10 @@ export default class extends Component {
         url: '/',
       },
       {
+        title: 'Mėgstamiausi',
+        url: '/favorites',
+      },
+      {
         title: 'Komandos',
         url: '/teams',
       },
@@ -49,32 +53,28 @@ export default class extends Component {
     const { menu, animation } = this.state;
     if (!menu) {
       this.toggleMenu();
-      Animated.timing(
-        animation,
-        {
-          toValue: 0,
-          duration: 200,
-
-        },
-      ).start();
+      Animated.timing(animation, {
+        toValue: 0,
+        duration: 200,
+      }).start();
     } else {
-      Animated.timing(
-        animation,
-        {
-          toValue: -250,
-          duration: 200,
-        },
-      ).start();
+      Animated.timing(animation, {
+        toValue: -250,
+        duration: 200,
+      }).start();
       setTimeout(this.toggleMenu, 200);
     }
   };
 
   handleRedirect = (url) => {
     const { navigate } = this.props;
-    this.setState({
-      menu: false,
-      animation: new Animated.Value(-250),
-    }, () => navigate(url));
+    this.setState(
+      {
+        menu: false,
+        animation: new Animated.Value(-250),
+      },
+      () => navigate(url),
+    );
   };
 
   displayMenu = () => {
@@ -83,10 +83,7 @@ export default class extends Component {
       <Animated.View style={{ left: animation }}>
         <View style={styles.menu}>
           {menuItems.map(({ title, url }) => (
-            <TouchableOpacity
-              key={title}
-              onPress={() => this.handleRedirect(url)}
-            >
+            <TouchableOpacity key={title} onPress={() => this.handleRedirect(url)}>
               <Text style={styles.menuItem}>{title}</Text>
             </TouchableOpacity>
           ))}
@@ -108,14 +105,8 @@ export default class extends Component {
             color={'white'}
             onPress={this.toggleFade}
           />
-          <TouchableOpacity
-            style={styles.imageWrapper}
-            onPress={() => navigate('/')}
-          >
-            <Image
-              source={Images.logo}
-              style={styles.image}
-            />
+          <TouchableOpacity style={styles.imageWrapper} onPress={() => navigate('/')}>
+            <Image source={Images.logo} style={styles.image} />
           </TouchableOpacity>
         </View>
         {menu && this.displayMenu()}

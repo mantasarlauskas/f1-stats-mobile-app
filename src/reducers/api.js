@@ -3,6 +3,8 @@ const initialState = {
   teams: [],
   driverStandings: [],
   teamStandings: [],
+  favoriteDrivers: [],
+  favoriteTeams: [],
   races: [],
   isLoading: false,
 };
@@ -38,6 +40,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         races: action.payload,
+      };
+    case 'SET_FAVORITE_DRIVERS':
+      return {
+        ...state,
+        favoriteDrivers: action.payload,
+      };
+    case 'SET_FAVORITE_TEAMS':
+      return {
+        ...state,
+        favoriteTeams: action.payload,
       };
     default:
       return state;

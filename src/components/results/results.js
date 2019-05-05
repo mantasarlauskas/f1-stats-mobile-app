@@ -12,15 +12,16 @@ export default class extends Component {
     const {
       history: { push },
     } = this.props;
-    return new Date() > new Date(date) ? (
+    return (
       <TouchableOpacity key={round} onPress={() => push(`/results/${round}`)}>
         <View style={styles.tableRow}>
           <Text style={[styles.tableCell, styles.tableCellSmall]}>{round}</Text>
           <Text style={[styles.tableCell, styles.tableCellBig]}>{raceName}</Text>
           <Text style={[styles.tableCell, styles.tableCellBig]}>{circuitName}</Text>
+          <Text style={[styles.tableCell, styles.tableCellBig]}>{date}</Text>
         </View>
       </TouchableOpacity>
-    ) : null;
+    );
   };
 
   render() {
@@ -37,6 +38,7 @@ export default class extends Component {
               Lenktynės
             </Text>
             <Text style={[styles.tableCell, styles.tableHeader, styles.tableCellBig]}>Trasa</Text>
+            <Text style={[styles.tableCell, styles.tableHeader, styles.tableCellBig]}>Data</Text>
           </View>
           {races.map(this.renderRow)}
         </View>

@@ -6,7 +6,10 @@ import {
   setDriverStandings,
   setTeamStandings,
   setRaces,
+  setFavoriteDrivers,
+  setFavoriteTeams,
 } from '../actions/api';
+import { getFavoriteDrivers, getFavoriteTeams, addFavoriteTeam } from '../../database';
 
 export const url = 'http://ergast.com/api/f1/2019';
 
@@ -65,6 +68,13 @@ const getRaces = () => async (dispatch) => {
   dispatch(setRaces(Races));
 };
 
+const getFavorites = () => async (dispatch) => {
+  const drivers = await getFavoriteDrivers();
+  dispatch(setFavoriteDrivers(drivers));
+  const teams = await getFavoriteTeams();
+  dispatch(setFavoriteTeams(teams));
+};
+
 export default () => async (dispatch) => {
   dispatch(toggleLoading());
   await dispatch(getDrivers());
@@ -72,5 +82,6 @@ export default () => async (dispatch) => {
   await dispatch(getDriverStandings());
   await dispatch(getTeamStandings());
   await dispatch(getRaces());
+  await dispatch(getFavorites());
   dispatch(toggleLoading());
 };

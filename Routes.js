@@ -15,14 +15,16 @@ import Results from './src/components/results';
 import RaceResults from './src/components/raceResults';
 import Images from './src/img/images';
 import Header from './src/components/header';
+import Favorites from './src/components/favorites';
 
 class Routes extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isReady: false,
-    };
-    props.onLoad();
+  state = {
+    isReady: false,
+  };
+
+  componentDidMount() {
+    const { fetchData: getData } = this.props;
+    getData();
   }
 
   cacheImages = images => images.map(image => Asset.fromModule(image).downloadAsync());
@@ -42,15 +44,12 @@ class Routes extends Component {
     const {
       history: { push },
     } = this.props;
-    if (!isReady) {
-      return (
-        <AppLoading
-          startAsync={this.loadAssetsAsync}
-          onFinish={() => this.setState({ isReady: true })}
-        />
-      );
-    }
-    return (
+    return !isReady ? (
+      <AppLoading
+        startAsync={this.loadAssetsAsync}
+        onFinish={() => this.setState({ isReady: true })}
+      />
+    ) : (
       <Fragment>
         <Header navigate={push} />
         <View style={{ marginTop: 74 }}>
@@ -64,6 +63,7 @@ class Routes extends Component {
             <Route path={'/schedule'} component={Schedule} />
             <Route exact path={'/results'} component={Results} />
             <Route path={'/results/:id'} component={RaceResults} />
+            <Route path={'/favorites'} component={Favorites} />
           </Switch>
         </View>
       </Fragment>
@@ -71,13 +71,9 @@ class Routes extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  onLoad: () => dispatch(fetchData()),
-});
-
 export default withRouter(
   connect(
     null,
-    mapDispatchToProps,
+    { fetchData },
   )(Routes),
 );

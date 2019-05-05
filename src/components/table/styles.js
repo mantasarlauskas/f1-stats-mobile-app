@@ -7,6 +7,20 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 20,
   },
+  dayCount: {
+    marginLeft: 10,
+  },
+  clock: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '90%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: 10,
+  },
   table: {
     marginLeft: 'auto',
     marginRight: 'auto',

@@ -8,6 +8,16 @@ export const setTeams = teams => ({
   payload: teams,
 });
 
+export const setFavoriteDrivers = drivers => ({
+  type: 'SET_FAVORITE_DRIVERS',
+  payload: drivers,
+});
+
+export const setFavoriteTeams = teams => ({
+  type: 'SET_FAVORITE_TEAMS',
+  payload: teams,
+});
+
 export const setDriverStandings = standings => ({
   type: 'SET_DRIVER_STANDINGS',
   payload: standings,
