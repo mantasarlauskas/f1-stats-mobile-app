@@ -7,40 +7,37 @@ import { FontAwesome } from '@expo/vector-icons';
 import Images from '../../img/images';
 import styles from './styles';
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      menu: false,
-      animation: new Animated.Value(-250),
-      menuItems: [
-        {
-          title: 'Pagrindinis',
-          url: '/',
-        },
-        {
-          title: 'Komandos',
-          url: '/teams',
-        },
-        {
-          title: 'Lenktynininkai',
-          url: '/drivers',
-        },
-        {
-          title: 'Taškų įskaitos',
-          url: '/standings',
-        },
-        {
-          title: 'Rezultatai',
-          url: '/results',
-        },
-        {
-          title: 'Tvarkaraštis',
-          url: '/schedule',
-        },
-      ],
-    };
-  }
+export default class extends Component {
+  state = {
+    menu: false,
+    animation: new Animated.Value(-250),
+    menuItems: [
+      {
+        title: 'Pagrindinis',
+        url: '/',
+      },
+      {
+        title: 'Komandos',
+        url: '/teams',
+      },
+      {
+        title: 'Lenktynininkai',
+        url: '/drivers',
+      },
+      {
+        title: 'Taškų įskaitos',
+        url: '/standings',
+      },
+      {
+        title: 'Rezultatai',
+        url: '/results',
+      },
+      {
+        title: 'Tvarkaraštis',
+        url: '/schedule',
+      },
+    ],
+  };
 
   toggleMenu = () => {
     this.setState(({ menu }) => ({
@@ -126,5 +123,3 @@ class Header extends Component {
     );
   }
 }
-
-export default Header;

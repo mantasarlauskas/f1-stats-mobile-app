@@ -1,1 +1,1 @@
-export { default } from './standings';
+export { default } from './standings-container';

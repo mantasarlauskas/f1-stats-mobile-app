@@ -5,14 +5,8 @@ import styles from './styles';
 
 export default ({ title, path, navigate }) => (
   <TouchableOpacity style={styles.container} onPress={navigate}>
-    <ImageBackground
-      style={styles.image}
-      source={path}
-    >
-      <LinearGradient
-        colors={['rgba(61, 52, 52, 0.8)', 'transparent']}
-        style={styles.info}
-      >
+    <ImageBackground style={styles.image} source={path}>
+      <LinearGradient colors={['rgba(61, 52, 52, 0.8)', 'transparent']} style={styles.info}>
         <Text style={styles.title}>{title}</Text>
       </LinearGradient>
     </ImageBackground>

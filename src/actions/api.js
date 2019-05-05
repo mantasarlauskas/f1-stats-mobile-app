@@ -22,12 +22,7 @@ export const toggleLoading = () => ({
   type: 'TOGGLE_LOADING',
 });
 
-export const setSchedule = schedule => ({
-  type: 'SET_SCHEDULE',
-  payload: schedule,
-});
-
-export const setResults = results => ({
-  type: 'SET_RESULTS',
-  payload: results,
+export const setRaces = races => ({
+  type: 'SET_RACES',
+  payload: races,
 });

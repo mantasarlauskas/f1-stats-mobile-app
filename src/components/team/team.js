@@ -3,13 +3,12 @@ import {
   Text, ScrollView, View, Image,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { connect } from 'react-redux';
 import styles from './styles';
 import globalStyles from '../globalStyles';
 import Images from '../../img/images';
 import Info from '../info';
 
-const Team = ({
+export default ({
   teamStandings: { points, position, wins },
   team: { constructorId, name, nationality },
   drivers,
@@ -49,20 +48,10 @@ const Team = ({
           <Info data={data} />
           <View style={[globalStyles[constructorId], styles.line]} />
           <View style={styles.image}>
-            <Image source={Images.teams2018[constructorId]} />
+            <Image source={Images.teams2019[constructorId]} />
           </View>
         </View>
       </View>
     </ScrollView>
   );
 };
-
-const mapStateToProps = ({
-  api: { teams, driverStandings, teamStandings },
-}, { match: { params: { id } } }) => ({
-  team: teams.find(({ constructorId }) => constructorId === id),
-  drivers: driverStandings.filter(({ Constructors }) => Constructors[0].constructorId === id),
-  teamStandings: teamStandings.find(({ Constructor: { constructorId } }) => constructorId === id),
-});
-
-export default connect(mapStateToProps)(Team);

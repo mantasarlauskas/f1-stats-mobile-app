@@ -29,15 +29,19 @@ class Routes extends Component {
 
   loadAssetsAsync = async () => {
     const imageAssets = this.cacheImages([
-      ...Object.keys(Images.teams2018).map(key => Images.teams2018[key]),
-      ...Object.keys(Images).filter(key => typeof Images[key] !== 'object').map(key => Images[key])
+      ...Object.keys(Images.teams2019).map(key => Images.teams2019[key]),
+      ...Object.keys(Images)
+        .filter(key => typeof Images[key] !== 'object')
+        .map(key => Images[key]),
     ]);
     await Promise.all([...imageAssets]);
   };
 
   render() {
     const { isReady } = this.state;
-    const { history: { push } } = this.props;
+    const {
+      history: { push },
+    } = this.props;
     if (!isReady) {
       return (
         <AppLoading
@@ -71,4 +75,9 @@ const mapDispatchToProps = dispatch => ({
   onLoad: () => dispatch(fetchData()),
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(Routes));
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps,
+  )(Routes),
+);

@@ -13,11 +13,11 @@ export default StyleSheet.create({
   renault: {
     backgroundColor: '#FFF500',
   },
-  force_india: {
+  racing_point: {
     backgroundColor: '#F596C8',
   },
   haas: {
-    backgroundColor: '#828282',
+    backgroundColor: '#bd9e57',
   },
   toro_rosso: {
     backgroundColor: '#469BFF',
@@ -25,8 +25,8 @@ export default StyleSheet.create({
   mclaren: {
     backgroundColor: '#FF8700',
   },
-  sauber: {
-    backgroundColor: '#DC0000',
+  alfa: {
+    backgroundColor: '#9B0000',
   },
   williams: {
     backgroundColor: '#FFF',
@@ -43,11 +43,11 @@ export default StyleSheet.create({
   renaultBorder: {
     borderColor: '#FFF500',
   },
-  force_indiaBorder: {
+  racing_pointBorder: {
     borderColor: '#F596C8',
   },
   haasBorder: {
-    borderColor: '#828282',
+    borderColor: '#bd9e57',
   },
   toro_rossoBorder: {
     borderColor: '#469BFF',
@@ -55,8 +55,8 @@ export default StyleSheet.create({
   mclarenBorder: {
     borderColor: '#FF8700',
   },
-  sauberBorder: {
-    borderColor: '#DC0000',
+  alfaBorder: {
+    borderColor: '#9B0000',
   },
   williamsBorder: {
     borderColor: '#FFF',
