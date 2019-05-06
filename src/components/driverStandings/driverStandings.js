@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import globalStyles from '../globalStyles';
 import styles from '../standings/styles';
 
-export default ({ driverStandings }) => (
+const DriverStandings = ({ driverStandings }) => (
   <View style={styles.container}>
     {driverStandings.map(
       ({
@@ -31,3 +31,5 @@ export default ({ driverStandings }) => (
     )}
   </View>
 );
+
+export default DriverStandings;

@@ -6,7 +6,7 @@ import TeamStandings from '../teamStandings';
 import Loading from '../loading';
 import styles from './styles';
 
-export default class extends Component {
+class Standings extends Component {
   state = {
     index: 0,
     // eslint-disable-next-line react/no-unused-state
@@ -41,3 +41,5 @@ export default class extends Component {
     );
   }
 }
+
+export default Standings;

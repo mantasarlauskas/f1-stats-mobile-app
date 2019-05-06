@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import globalStyles from '../globalStyles';
 import styles from '../standings/styles';
 
-export default ({ teamStandings }) => (
+const TeamStandings = ({ teamStandings }) => (
   <View style={styles.container}>
     {teamStandings.map(({ position, points, Constructor: { name, constructorId } }) => (
       <View key={position} style={styles.row}>
@@ -23,3 +23,5 @@ export default ({ teamStandings }) => (
     ))}
   </View>
 );
+
+export default TeamStandings;

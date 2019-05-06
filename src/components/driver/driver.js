@@ -7,18 +7,21 @@ import globalStyles from '../globalStyles';
 import Images from '../../img/images';
 import Info from '../info';
 
-export default ({
-  driver, team, isFavorite, setFavoriteDriver, removeFavoriteDriver, id,
-}) => {
-  const {
+const Driver = ({
+  driver: {
+    givenName, familyName, permanentNumber, nationality, dateOfBirth,
+  },
+  team: {
     Constructors: [{ name, constructorId }],
     points,
     position,
     wins,
-  } = team;
-  const {
-    givenName, familyName, permanentNumber, nationality, dateOfBirth,
-  } = driver;
+  },
+  isFavorite,
+  setFavoriteDriver,
+  removeFavoriteDriver,
+  id,
+}) => {
   const data = [
     {
       title: 'Komanda',
@@ -82,3 +85,5 @@ export default ({
     </ScrollView>
   );
 };
+
+export default Driver;

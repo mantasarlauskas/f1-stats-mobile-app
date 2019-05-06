@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   header: {
@@ -27,18 +27,5 @@ export default StyleSheet.create({
   image: {
     width: 60,
     height: 60,
-  },
-  menu: {
-    backgroundColor: '#E40000',
-  },
-  menuItem: {
-    color: '#FFF',
-    height: 40,
-    lineHeight: 40,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    borderWidth: 0.5,
-    borderColor: '#d6d7da',
-    width: Dimensions.get('window').width,
   },
 });

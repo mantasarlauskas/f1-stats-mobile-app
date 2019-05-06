@@ -1,39 +1,19 @@
-import React, { Component } from 'react';
-import {
-  ScrollView, View, Text, TouchableOpacity,
-} from 'react-native';
-import styles from './styles';
-import globalStyles from '../globalStyles';
+import React from 'react';
+import { ScrollView, View } from 'react-native';
+import DriverRow from '../driverRow';
 import Loading from '../loading';
+import styles from './styles';
 
-export default class extends Component {
-  renderDriver = ({ familyName, givenName, driverId }) => {
-    const {
-      driverStandings,
-      history: { push },
-    } = this.props;
-    const {
-      Constructors: [{ constructorId }],
-    } = driverStandings.find(({ Driver: { driverId: dId } }) => dId === driverId);
-    return (
-      <TouchableOpacity
-        onPress={() => push(`/driver/${driverId}`)}
-        style={[styles.driver, globalStyles[`${constructorId}Border`]]}
-        key={driverId}
-      >
-        <Text style={styles.title}>{`${givenName} ${familyName}`}</Text>
-      </TouchableOpacity>
-    );
-  };
+const Drivers = ({ drivers, isLoading }) => (isLoading ? (
+  <Loading />
+) : (
+  <ScrollView>
+    <View style={styles.container}>
+      {drivers.map(driver => (
+        <DriverRow key={driver.driverId} {...driver} />
+      ))}
+    </View>
+  </ScrollView>
+));
 
-  render() {
-    const { drivers, isLoading } = this.props;
-    return isLoading ? (
-      <Loading />
-    ) : (
-      <ScrollView>
-        <View style={styles.container}>{drivers.map(this.renderDriver)}</View>
-      </ScrollView>
-    );
-  }
-}
+export default Drivers;

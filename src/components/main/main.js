@@ -3,7 +3,7 @@ import { ScrollView } from 'react-native';
 import Card from '../card';
 import Images from '../../img/images';
 
-export default ({ history: { push } }) => (
+const Main = ({ history: { push } }) => (
   <ScrollView>
     <Card path={Images.crowd} title={'Mėgstamiausi'} navigate={() => push('/favorites')} />
     <Card path={Images.teams} title={'Komandos'} navigate={() => push('/teams')} />
@@ -13,3 +13,5 @@ export default ({ history: { push } }) => (
     <Card path={Images.spa} title={'Tvarkaraštis'} navigate={() => push('/schedule')} />
   </ScrollView>
 );
+
+export default Main;

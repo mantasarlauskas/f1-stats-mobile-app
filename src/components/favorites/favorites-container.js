@@ -1,13 +1,7 @@
 import { connect } from 'react-redux';
 import Favorites from './favorites';
 
-const mapStateToProps = ({
-  api: {
-    driverStandings, teamStandings, isLoading, favoriteDrivers, favoriteTeams,
-  },
-}) => ({
-  driverStandings,
-  teamStandings,
+const mapStateToProps = ({ api: { isLoading, favoriteDrivers, favoriteTeams } }) => ({
   isLoading,
   favoriteDrivers,
   favoriteTeams,

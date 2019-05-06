@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { ScrollView, View, Text } from 'react-native';
 import styles from '../table/styles';
 
-export default class extends Component {
-  renderRow = ({
+const Qualifying = ({ results }) => {
+  const renderRow = ({
     Driver: { givenName, familyName, driverId },
     Constructor: { name },
     position,
@@ -21,38 +21,27 @@ export default class extends Component {
     </View>
   );
 
-  render() {
-    const { results } = this.props;
-    return (
-      <ScrollView>
-        <View style={styles.table}>
-          <View style={styles.tableRow}>
-            <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '7%' }]}>P.</Text>
-            <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '25%' }]}>
-              Pilotas
-            </Text>
-            <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '25%' }]}>
-              Komanda
-            </Text>
-            <Text
-              style={[styles.tableCell, styles.tableHeader, { flexBasis: '15%', fontSize: 10 }]}
-            >
-              Q1
-            </Text>
-            <Text
-              style={[styles.tableCell, styles.tableHeader, { flexBasis: '14%', fontSize: 10 }]}
-            >
-              Q2
-            </Text>
-            <Text
-              style={[styles.tableCell, styles.tableHeader, { flexBasis: '14%', fontSize: 10 }]}
-            >
-              Q3
-            </Text>
-          </View>
-          {results.map(this.renderRow)}
+  return (
+    <ScrollView>
+      <View style={styles.table}>
+        <View style={styles.tableRow}>
+          <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '7%' }]}>P.</Text>
+          <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '25%' }]}>Pilotas</Text>
+          <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '25%' }]}>Komanda</Text>
+          <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '15%', fontSize: 10 }]}>
+            Q1
+          </Text>
+          <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '14%', fontSize: 10 }]}>
+            Q2
+          </Text>
+          <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '14%', fontSize: 10 }]}>
+            Q3
+          </Text>
         </View>
-      </ScrollView>
-    );
-  }
-}
+        {results.map(renderRow)}
+      </View>
+    </ScrollView>
+  );
+};
+
+export default Qualifying;

@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
 import Drivers from './drivers';
 
-const mapStateToProps = ({ api: { drivers, driverStandings, isLoading } }) => ({
+const mapStateToProps = ({ api: { drivers, isLoading } }) => ({
   drivers,
-  driverStandings,
   isLoading,
 });
 

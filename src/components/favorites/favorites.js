@@ -1,68 +1,29 @@
-import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { View, ScrollView, Text } from 'react-native';
+import FavoriteTeam from '../favoriteTeam';
+import FavoriteDriver from '../favoriteDriver';
 import Loading from '../loading';
-import globalStyles from '../globalStyles';
 import styles from './styles';
 
-export default class extends Component {
-  renderDriver = ({ name: driverId }) => {
-    const {
-      driverStandings,
-      history: { push },
-    } = this.props;
-    const {
-      Constructors: [{ constructorId }],
-      Driver: { givenName, familyName },
-    } = driverStandings.find(({ Driver: { driverId: dId } }) => dId === driverId);
-    return (
-      <TouchableOpacity
-        onPress={() => push(`/driver/${driverId}`)}
-        style={[styles.item, globalStyles[`${constructorId}Border`]]}
-        key={driverId}
-      >
-        <Text style={styles.title}>{`${givenName} ${familyName}`}</Text>
-      </TouchableOpacity>
-    );
-  };
+const Favorites = ({ isLoading, favoriteTeams, favoriteDrivers }) => (isLoading ? (
+  <Loading />
+) : (
+  <ScrollView>
+    <View style={styles.container}>
+      <Text style={styles.sectionTitle}>Mėgstamiausi lenktyninkai</Text>
+      {favoriteDrivers.length > 0 ? (
+        favoriteDrivers.map(driver => <FavoriteDriver key={driver.name} {...driver} />)
+      ) : (
+        <Text style={styles.empty}>Sąrašas tuščias</Text>
+      )}
+      <Text style={styles.sectionTitle}>Mėgstamiausios komandos</Text>
+      {favoriteTeams.length > 0 ? (
+        favoriteTeams.map(team => <FavoriteTeam key={team.name} {...team} />)
+      ) : (
+        <Text style={styles.empty}>Sąrašas tuščias</Text>
+      )}
+    </View>
+  </ScrollView>
+));
 
-  renderTeam = ({ name: teamId }) => {
-    const {
-      teamStandings,
-      history: { push },
-    } = this.props;
-    const {
-      Constructor: { constructorId, name },
-    } = teamStandings.find(({ Constructor: { constructorId: id } }) => id === teamId);
-    return (
-      <TouchableOpacity
-        key={constructorId}
-        style={[styles.item, globalStyles[`${constructorId}Border`]]}
-        onPress={() => push(`/team/${constructorId}`)}
-      >
-        <Text style={styles.title}>{name}</Text>
-      </TouchableOpacity>
-    );
-  };
-
-  render() {
-    const { isLoading, favoriteTeams, favoriteDrivers } = this.props;
-    return isLoading ? (
-      <Loading />
-    ) : (
-      <View style={styles.container}>
-        <Text style={styles.sectionTitle}>Mėgstamiausi lenktyninkai</Text>
-        {favoriteDrivers.length > 0 ? (
-          favoriteDrivers.map(this.renderDriver)
-        ) : (
-          <Text style={styles.empty}>Sąrašas tuščias</Text>
-        )}
-        <Text style={styles.sectionTitle}>Mėgstamiausios komandos</Text>
-        {favoriteTeams.length > 0 ? (
-          favoriteTeams.map(this.renderTeam)
-        ) : (
-          <Text style={styles.empty}>Sąrašas tuščias</Text>
-        )}
-      </View>
-    );
-  }
-}
+export default Favorites;

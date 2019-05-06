@@ -1,46 +1,15 @@
 import React, { Component } from 'react';
-import {
-  TouchableOpacity, View, Text, Animated,
-} from 'react-native';
+import { TouchableOpacity, View, Animated } from 'react-native';
 import Image from 'react-native-remote-svg';
 import { FontAwesome } from '@expo/vector-icons';
 import Images from '../../img/images';
+import Menu from '../menu';
 import styles from './styles';
 
-export default class extends Component {
+class Header extends Component {
   state = {
     menu: false,
     animation: new Animated.Value(-250),
-    menuItems: [
-      {
-        title: 'Pagrindinis',
-        url: '/',
-      },
-      {
-        title: 'Mėgstamiausi',
-        url: '/favorites',
-      },
-      {
-        title: 'Komandos',
-        url: '/teams',
-      },
-      {
-        title: 'Lenktynininkai',
-        url: '/drivers',
-      },
-      {
-        title: 'Taškų įskaitos',
-        url: '/standings',
-      },
-      {
-        title: 'Rezultatai',
-        url: '/results',
-      },
-      {
-        title: 'Tvarkaraštis',
-        url: '/schedule',
-      },
-    ],
   };
 
   toggleMenu = () => {
@@ -77,23 +46,8 @@ export default class extends Component {
     );
   };
 
-  displayMenu = () => {
-    const { menuItems, animation } = this.state;
-    return (
-      <Animated.View style={{ left: animation }}>
-        <View style={styles.menu}>
-          {menuItems.map(({ title, url }) => (
-            <TouchableOpacity key={title} onPress={() => this.handleRedirect(url)}>
-              <Text style={styles.menuItem}>{title}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-      </Animated.View>
-    );
-  };
-
   render() {
-    const { menu } = this.state;
+    const { menu, animation } = this.state;
     const { navigate } = this.props;
     return (
       <View style={styles.header}>
@@ -109,8 +63,10 @@ export default class extends Component {
             <Image source={Images.logo} style={styles.image} />
           </TouchableOpacity>
         </View>
-        {menu && this.displayMenu()}
+        {menu && <Menu animation={animation} onRedirect={this.handleRedirect} />}
       </View>
     );
   }
 }
+
+export default Header;

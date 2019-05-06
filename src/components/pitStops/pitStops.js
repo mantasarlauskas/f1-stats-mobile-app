@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { ScrollView, View, Text } from 'react-native';
 import styles from '../table/styles';
 
-export default class extends Component {
-  renderRow = ({ driverId, lap, duration }, index) => {
-    const { driverStandings, drivers } = this.props;
+const PitStops = ({ driverStandings, drivers, results }) => {
+  const renderRow = ({ driverId, lap, duration }, index) => {
     const {
       Constructors: [{ name }],
     } = driverStandings.find(({ Driver: { driverId: dId } }) => dId === driverId);
@@ -19,20 +18,19 @@ export default class extends Component {
     );
   };
 
-  render() {
-    const { results } = this.props;
-    return (
-      <ScrollView>
-        <View style={styles.table}>
-          <View style={styles.tableRow}>
-            <Text style={[styles.tableCell, styles.tableHeader, styles.tableCellBig]}>Pilotas</Text>
-            <Text style={[styles.tableCell, styles.tableHeader, styles.tableCellBig]}>Komanda</Text>
-            <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '20%' }]}>Ratas</Text>
-            <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '20%' }]}>Trukmė</Text>
-          </View>
-          {results.map(this.renderRow)}
+  return (
+    <ScrollView>
+      <View style={styles.table}>
+        <View style={styles.tableRow}>
+          <Text style={[styles.tableCell, styles.tableHeader, styles.tableCellBig]}>Pilotas</Text>
+          <Text style={[styles.tableCell, styles.tableHeader, styles.tableCellBig]}>Komanda</Text>
+          <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '20%' }]}>Ratas</Text>
+          <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '20%' }]}>Trukmė</Text>
         </View>
-      </ScrollView>
-    );
-  }
-}
+        {results.map(renderRow)}
+      </View>
+    </ScrollView>
+  );
+};
+
+export default PitStops;
