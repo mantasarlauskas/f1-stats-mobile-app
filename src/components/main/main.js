@@ -5,6 +5,7 @@ import Images from '../../img/images';
 
 export default ({ history: { push } }) => (
   <ScrollView>
+    <Card path={Images.crowd} title={'Mėgstamiausi'} navigate={() => push('/favorites')} />
     <Card path={Images.teams} title={'Komandos'} navigate={() => push('/teams')} />
     <Card path={Images.vettel} title={'Lenktynininkai'} navigate={() => push('/drivers')} />
     <Card path={Images.finish} title={'Taškų įskaitos'} navigate={() => push('/standings')} />

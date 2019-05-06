@@ -3,7 +3,7 @@ import { Switch, Route, withRouter } from 'react-router-native';
 import { View } from 'react-native';
 import { AppLoading, Asset } from 'expo';
 import { connect } from 'react-redux';
-import fetchData from './src/thunks/api';
+import { fetchData } from './src/thunks/api';
 import Teams from './src/components/teams';
 import Team from './src/components/team';
 import Drivers from './src/components/drivers';

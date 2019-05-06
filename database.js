@@ -19,26 +19,10 @@ export const getFavoriteDrivers = () => new Promise(resolve => db.transaction(tx
 
 export const getFavoriteTeams = () => new Promise(resolve => db.transaction(tx => tx.executeSql('SELECT * FROM teams', [], (a, res) => resolve(res.rows._array))));
 
-export const addFavoriteDriver = (driverId) => {
-  db.transaction((tx) => {
-    tx.executeSql('INSERT INTO drivers (name) VALUES (?)', [driverId]);
-  });
-};
+export const addFavoriteDriver = driverId => new Promise(resolve => db.transaction(tx => tx.executeSql('INSERT INTO drivers (name) VALUES (?)', [driverId], (a, res) => resolve(res))));
 
-export const addFavoriteTeam = (teamId) => {
-  db.transaction((tx) => {
-    tx.executeSql('INSERT INTO teams (name) VALUES (?)', [teamId]);
-  });
-};
+export const addFavoriteTeam = teamId => new Promise(resolve => db.transaction(tx => tx.executeSql('INSERT INTO teams (name) VALUES (?)', [teamId], (a, res) => resolve(res))));
 
-export const deleteFavoriteDriver = (driverId) => {
-  db.transaction((tx) => {
-    tx.executeSql('DELETE FROM drivers WHERE name = ?', [driverId]);
-  });
-};
+export const deleteFavoriteDriver = driverId => new Promise(resolve => db.transaction(tx => tx.executeSql('DELETE FROM drivers WHERE name = ?', [driverId], (a, res) => resolve(res))));
 
-export const deleteFavoriteTeam = (teamId) => {
-  db.transaction((tx) => {
-    tx.executeSql('DELETE FROM teams WHERE name = ?', [teamId]);
-  });
-};
+export const deleteFavoriteTeam = teamId => new Promise(resolve => db.transaction(tx => tx.executeSql('DELETE FROM teams WHERE name = ?', [teamId], (a, res) => resolve(res))));

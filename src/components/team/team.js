@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Text, ScrollView, View, Image,
+  Text, ScrollView, View, Image, TouchableOpacity,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import styles from './styles';
@@ -12,6 +12,10 @@ export default ({
   teamStandings: { points, position, wins },
   team: { constructorId, name, nationality },
   drivers,
+  isFavorite,
+  setFavoriteTeam,
+  removeFavoriteTeam,
+  id,
 }) => {
   const data = [
     {
@@ -31,6 +35,15 @@ export default ({
       text: nationality,
     },
   ];
+
+  const handleFavoriteClick = () => {
+    if (isFavorite) {
+      removeFavoriteTeam(id);
+    } else {
+      setFavoriteTeam(id);
+    }
+  };
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -51,6 +64,14 @@ export default ({
             <Image source={Images.teams2019[constructorId]} />
           </View>
         </View>
+        <TouchableOpacity
+          style={isFavorite ? [styles.favorite, styles.favoriteActive] : styles.favorite}
+          onPress={handleFavoriteClick}
+        >
+          <Text style={styles.favoriteText}>
+            {isFavorite ? 'Šalinti iš mėgstamiausių' : 'Pridėti į mėgstamiausius'}
+          </Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );

@@ -10,14 +10,34 @@ export default StyleSheet.create({
   },
   container: {
     backgroundColor: '#FFF',
-  },
-  content: {
-    backgroundColor: '#f7f4f1',
-    borderRadius: 5,
     marginLeft: 'auto',
     marginRight: 'auto',
     marginBottom: 30,
     width: '90%',
+  },
+  favorite: {
+    width: '70%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    backgroundColor: '#000',
+    marginTop: 30,
+    height: 50,
+    borderRadius: 5,
+    padding: 5,
+    justifyContent: 'center',
+  },
+  favoriteActive: {
+    backgroundColor: '#E40000',
+  },
+  favoriteText: {
+    textAlign: 'center',
+    color: '#FFF',
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+  content: {
+    backgroundColor: '#f7f4f1',
+    borderRadius: 5,
     paddingLeft: 20,
     paddingRight: 20,
     paddingBottom: 20,

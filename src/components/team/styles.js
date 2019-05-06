@@ -11,6 +11,26 @@ export default StyleSheet.create({
     marginTop: 15,
     marginBottom: 15,
   },
+  favorite: {
+    width: '70%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    backgroundColor: '#000',
+    marginBottom: 30,
+    height: 50,
+    borderRadius: 5,
+    padding: 5,
+    justifyContent: 'center',
+  },
+  favoriteActive: {
+    backgroundColor: '#E40000',
+  },
+  favoriteText: {
+    textAlign: 'center',
+    color: '#FFF',
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
   content: {
     backgroundColor: '#f7f4f1',
     borderRadius: 5,

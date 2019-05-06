@@ -1,13 +1,15 @@
 import React from 'react';
 import {
-  ScrollView, View, Text, Image,
+  ScrollView, View, Text, Image, TouchableOpacity,
 } from 'react-native';
 import styles from './styles';
 import globalStyles from '../globalStyles';
 import Images from '../../img/images';
 import Info from '../info';
 
-export default ({ driver, team }) => {
+export default ({
+  driver, team, isFavorite, setFavoriteDriver, removeFavoriteDriver, id,
+}) => {
   const {
     Constructors: [{ name, constructorId }],
     points,
@@ -47,6 +49,15 @@ export default ({ driver, team }) => {
       text: dateOfBirth,
     },
   ];
+
+  const handleFavoriteClick = () => {
+    if (isFavorite) {
+      removeFavoriteDriver(id);
+    } else {
+      setFavoriteDriver(id);
+    }
+  };
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -59,6 +70,14 @@ export default ({ driver, team }) => {
             <Image source={Images.teams2019[constructorId]} />
           </View>
         </View>
+        <TouchableOpacity
+          style={isFavorite ? [styles.favorite, styles.favoriteActive] : styles.favorite}
+          onPress={handleFavoriteClick}
+        >
+          <Text style={styles.favoriteText}>
+            {isFavorite ? 'Šalinti iš mėgstamiausių' : 'Pridėti į mėgstamiausius'}
+          </Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
