@@ -4,7 +4,7 @@ const images = {
   finish: require('./finish.jpg'),
   singapore: require('./singapore.jpg'),
   spa: require('./spa.jpg'),
-  logo: require('./f1_logo.svg'),
+  logo: require('./f1_logo.jpg'),
   crowd: require('./crowd.jpg'),
   teams2019: {
     mercedes: require('./teams/mercedes.png'),

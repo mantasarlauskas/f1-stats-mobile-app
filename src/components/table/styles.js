@@ -27,7 +27,7 @@ export default StyleSheet.create({
     width: '95%',
     backgroundColor: '#f7f4f1',
     marginBottom: 20,
-    marginTop: 20,
+    marginTop: 10,
   },
   tableRow: {
     flex: 1,

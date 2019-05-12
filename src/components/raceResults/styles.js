@@ -6,11 +6,12 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginTop: 15,
+    marginBottom: 5,
   },
   scene: {
     flex: 1,
   },
   tabBar: {
-    backgroundColor: '#E40000',
+    backgroundColor: '#000',
   },
 });

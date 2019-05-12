@@ -23,7 +23,7 @@ const Schedule = ({ races, isLoading }) => {
   return isLoading ? (
     <Loading />
   ) : (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: '#fff' }}>
       <Text style={styles.title}>Tvarkaraštis</Text>
       <View style={styles.clock}>
         <Feather name={'clock'} size={34} />

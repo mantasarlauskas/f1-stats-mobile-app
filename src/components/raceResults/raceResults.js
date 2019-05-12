@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { ScrollView, Dimensions, Text } from 'react-native';
-import { TabView, TabBar } from 'react-native-tab-view';
+import { Dimensions, Text, ScrollView } from 'react-native';
+import {
+  TabView, TabBar, PagerScroll, SceneMap,
+} from 'react-native-tab-view';
 import axios from 'axios';
 import Race from '../race';
 import Qualifying from '../qualifying';
@@ -12,11 +14,10 @@ import { url } from '../../thunks/api';
 class RaceResults extends Component {
   state = {
     index: 0,
-    // eslint-disable-next-line react/no-unused-state
     routes: [
-      { key: 'race', title: 'Lenktynės' },
-      { key: 'qualifying', title: 'Kvalifikacija' },
-      { key: 'pitStops', title: 'Sustojimai boksuose' },
+      { key: 'first', title: 'Lenktynės' },
+      { key: 'second', title: 'Kvalifikacija' },
+      { key: 'third', title: 'Sustojimai boksuose' },
     ],
     race: [],
     qualifying: [],
@@ -66,41 +67,72 @@ class RaceResults extends Component {
   renderTabBar = props => (
     <TabBar
       style={styles.tabBar}
-      indicatorStyle={{ backgroundColor: '#000' }}
+      indicatorStyle={{ backgroundColor: '#E40000' }}
       labelStyle={{ fontSize: 12 }}
       {...props}
     />
   );
 
-  render() {
+  renderInfo = () => {
     const {
       match: {
         params: { id },
       },
     } = this.props;
-    const {
-      index, race, isLoading, qualifying, pitStops,
-    } = this.state;
+    return <Text style={styles.title}>{`2019 m. ${id} etapo rezultatai`}</Text>;
+  };
+
+  renderRace = () => {
+    const { race } = this.state;
+    return (
+      <ScrollView style={{ backgroundColor: '#fff' }}>
+        {this.renderInfo()}
+        <Race results={race} />
+      </ScrollView>
+    );
+  };
+
+  renderQualifying = () => {
+    const { qualifying } = this.state;
+    return (
+      <ScrollView style={{ backgroundColor: '#fff' }}>
+        {this.renderInfo()}
+        <Qualifying results={qualifying} />
+      </ScrollView>
+    );
+  };
+
+  renderPitStops = () => {
+    const { pitStops } = this.state;
+    return (
+      <ScrollView style={{ backgroundColor: '#fff' }}>
+        {this.renderInfo()}
+        <PitStops results={pitStops} />
+      </ScrollView>
+    );
+  };
+
+  render() {
+    const { isLoading } = this.state;
     return isLoading ? (
       <Loading />
     ) : (
-      <ScrollView>
-        <TabView
-          navigationState={this.state}
-          style={styles.scene}
-          onIndexChange={newIndex => this.setState({ index: newIndex })}
-          initialLayout={{
-            width: Dimensions.get('window').width,
-            height: 0,
-          }}
-          renderScene={() => null}
-          renderTabBar={this.renderTabBar}
-        />
-        <Text style={styles.title}>{`2019 m. ${id} etapo rezultatai`}</Text>
-        {index === 0 && <Race results={race} />}
-        {index === 1 && <Qualifying results={qualifying} />}
-        {index === 2 && <PitStops results={pitStops} />}
-      </ScrollView>
+      <TabView
+        navigationState={this.state}
+        style={styles.scene}
+        renderScene={SceneMap({
+          first: this.renderRace,
+          second: this.renderQualifying,
+          third: this.renderPitStops,
+        })}
+        onIndexChange={index => this.setState({ index })}
+        initialLayout={{
+          width: Dimensions.get('window').width,
+          height: 0,
+        }}
+        renderTabBar={this.renderTabBar}
+        renderPager={props => <PagerScroll {...props} />}
+      />
     );
   }
 }

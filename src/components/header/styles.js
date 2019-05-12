@@ -5,27 +5,25 @@ export default StyleSheet.create({
     minHeight: 74,
     paddingTop: 24,
     backgroundColor: '#FFF',
-    position: 'absolute',
-    zIndex: 99,
   },
   container: {
-    backgroundColor: '#E40000',
+    backgroundColor: '#000',
     height: 50,
     flexDirection: 'row',
     alignItems: 'center',
-    zIndex: 99,
   },
-  bars: {
+  icon: {
     flexBasis: '20%',
     alignSelf: 'center',
     marginLeft: 10,
   },
   imageWrapper: {
-    flexBasis: '80%',
-    marginLeft: 80,
+    flexBasis: '30%',
+    marginLeft: 50,
   },
   image: {
-    width: 60,
-    height: 60,
+    position: 'relative',
+    width: '100%',
+    height: '100%',
   },
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, View, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import styles from '../table/styles';
 
 const Qualifying = ({ results }) => {
@@ -22,25 +22,23 @@ const Qualifying = ({ results }) => {
   );
 
   return (
-    <ScrollView>
-      <View style={styles.table}>
-        <View style={styles.tableRow}>
-          <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '7%' }]}>P.</Text>
-          <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '25%' }]}>Pilotas</Text>
-          <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '25%' }]}>Komanda</Text>
-          <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '15%', fontSize: 10 }]}>
-            Q1
-          </Text>
-          <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '14%', fontSize: 10 }]}>
-            Q2
-          </Text>
-          <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '14%', fontSize: 10 }]}>
-            Q3
-          </Text>
-        </View>
-        {results.map(renderRow)}
+    <View style={styles.table}>
+      <View style={styles.tableRow}>
+        <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '7%' }]}>P.</Text>
+        <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '25%' }]}>Pilotas</Text>
+        <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '25%' }]}>Komanda</Text>
+        <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '15%', fontSize: 10 }]}>
+          Q1
+        </Text>
+        <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '14%', fontSize: 10 }]}>
+          Q2
+        </Text>
+        <Text style={[styles.tableCell, styles.tableHeader, { flexBasis: '14%', fontSize: 10 }]}>
+          Q3
+        </Text>
       </View>
-    </ScrollView>
+      {results.map(renderRow)}
+    </View>
   );
 };
 
